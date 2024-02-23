@@ -11,16 +11,13 @@ This project is a web application built using React and TypeScript that allows u
 - **TypeScript**: Utilizes TypeScript for static typing and improved code quality.
 
 ## Installation
-1. Clone the repository from GitHub: `git clone https://github.com/your-username/react-typescript-book-search-app.git`
+1. Clone the repository from GitHub: `git clone git@github.com:c1008h/booksearch.git`
 2. Navigate into the project directory: `cd react-typescript-book-search-app`
 3. Install dependencies: `npm install`
 
 ## Usage
-1. Obtain an API key from OpenLibrary (if required).
-2. Create a `.env` file in the root directory of the project.
-3. Add your API key to the `.env` file: `REACT_APP_OPENLIBRARY_API_KEY=your-api-key-here`
-4. Start the development server: `npm start`
-5. Open your web browser and navigate to `http://localhost:3000` to view the application.
+1. Start the development server: `npm start`
+2. Open your web browser and navigate to `http://localhost:3000` to view the application.
 
 ## Contributing
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
