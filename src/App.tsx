@@ -1,16 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Button, TextField, Typography, SelectChangeEvent, FormControl, MenuItem, Box, Select, InputLabel } from '@mui/material';
+import {BookProp, SearchResultProp} from './interface/bookInterface'
 
-interface Book {
-  title: string;
-  authors: string[];
-  first_publish_year: number;
-  isbn: string[];
-  number_of_pages: number;
-}
-interface SearchResult {
-  docs: Book[];
-}
 const SortOptions = {
   RELEVANCE: 'relevance',
   YEAR_OLDEST_FIRST: 'yearOldestFirst',
@@ -18,11 +9,10 @@ const SortOptions = {
 };
 
 const ITEMS_PER_PAGE = 12;
-const MAX_HEIGHT = 200;
 
 function App() {
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [books, setBooks] = useState<Book[]>([]);
+  const [books, setBooks] = useState<BookProp[]>([]);
   const [sortOption, setSortOption] = useState<string | ''>(SortOptions.RELEVANCE);
   const [currentPage, setCurrentPage] = useState<number>(1)
   const APIURL = 'https://openlibrary.org/search.json?q='
@@ -33,7 +23,7 @@ function App() {
       const fetchData = async () => {
         try {
           const response = await fetch(APIURL + 'spongebob')
-          const data: SearchResult = await response.json()
+          const data: SearchResultProp = await response.json()
           if(isMounted) setBooks(data.docs)
 
         } catch (error) {
@@ -53,7 +43,7 @@ function App() {
       if (searchTerm.trim().length < 3) return; 
       try {
         const response = await fetch(APIURL + searchTerm)
-        const data: SearchResult = await response.json()
+        const data: SearchResultProp = await response.json()
         // const sortedBooks = sortByRelevance ? data.docs : data.docs.sort((a, b) => a.first_publish_year - b.first_publish_year);
         let sortedBooks;
         if (sortOption === SortOptions.RELEVANCE) {
